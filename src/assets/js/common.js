@@ -1,9 +1,9 @@
 const comtemp = {
   'none': {
-    component: 'testNone'
+    component: 'formNone'
   },
   'input': {
-    component: 'testInput', // 组件名称，需要提前注册到 Vue
+    component: 'formInput', // 组件名称，需要提前注册到 Vue
     label: '单行文本', // 左侧组件列表中显示的名字
     propValue: '', // 组件所使用的值
     icon: 'icon-mobanzhizuo_danhangwenben', // 左侧组件列表中显示的名字
@@ -23,7 +23,7 @@ const comtemp = {
     }
   },
   'textArea': {
-    component: 'testTextarea', // 组件名称，需要提前注册到 Vue
+    component: 'formTextarea', // 组件名称，需要提前注册到 Vue
     label: '多行文本', // 左侧组件列表中显示的名字
     propValue: 'icon-duohangwenben', // 组件所使用的值
     icon: '', // 左侧组件列表中显示的名字
@@ -43,7 +43,7 @@ const comtemp = {
     }
   },
   'radio': {
-    component: 'testRadio', // 组件名称，需要提前注册到 Vue
+    component: 'formRadio', // 组件名称，需要提前注册到 Vue
     label: '单项选择', // 左侧组件列表中显示的名字
     propValue: '', // 组件所使用的值
     icon: 'icon-danxiangxuanze', // 左侧组件列表中显示的名字
@@ -63,7 +63,7 @@ const comtemp = {
     }
   },
   'checkbox': {
-    component: 'testCheckbox', // 组件名称，需要提前注册到 Vue
+    component: 'formCheckbox', // 组件名称，需要提前注册到 Vue
     label: '多项选择', // 左侧组件列表中显示的名字
     propValue: '', // 组件所使用的值
     icon: 'icon-duoxiangxuanze', // 左侧组件列表中显示的名字
@@ -83,7 +83,7 @@ const comtemp = {
     }
   },
   'select': {
-    component: 'testSelect', // 组件名称，需要提前注册到 Vue
+    component: 'formSelect', // 组件名称，需要提前注册到 Vue
     label: '下拉框', // 左侧组件列表中显示的名字
     propValue: '', // 组件所使用的值
     icon: 'icon-xialakuang1', // 左侧组件列表中显示的名字

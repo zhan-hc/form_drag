@@ -2,9 +2,9 @@
   <div class="wrap">
     <div class="content-left" @dragstart="startDrag">
       <h3 style="text-align: center">组件</h3>
-      <div class="drag-item" v-for="(item, i) in comtempList" :key="item.id">
+      <div class="drag-item" draggable v-for="(item, i) in comtempList" :key="item.id" :data-index="i+1">
         <i class="iconfont" :class="item.icon"></i>
-        <div class="text" draggable :data-index="i+1">{{item.label}}</div>
+        <div class="text">{{item.label}}</div>
       </div>
     </div>
     <div class="content" @drop="handleDrop" @dragover="overDrop($event)" @dragenter ="allowDrop($event)" @dragleave="removeVisCom">
@@ -31,13 +31,13 @@
 </template>
 
 <script>
-import testInput from '../../components/testInput.vue'
-import testTextarea from '../../components/testTextarea.vue'
-import testCheckbox from '../../components/testCheckbox.vue'
-import testSelect from '../../components/testSelect.vue'
-import testRadio from '../../components/testRadio.vue'
-import testNone from '../../components/testNone.vue'
-import formWrap from '../../components/formWrap.vue'
+import formInput from '../../components/form/formInput.vue'
+import formTextarea from '../../components/form/formTextarea.vue'
+import formCheckbox from '../../components/form/formCheckbox.vue'
+import formSelect from '../../components/form/formSelect.vue'
+import formRadio from '../../components/form/formRadio.vue'
+import formNone from '../../components/form/formNone.vue'
+import formWrap from '../../components/form/formWrap.vue'
 import { comtemp, comtempList } from '../../assets/js/common'
 export default {
   data () {
@@ -58,20 +58,20 @@ export default {
     }
   },
   components: {
-    testInput,
+    formInput,
     formWrap,
-    testNone,
-    testSelect,
-    testRadio,
-    testCheckbox,
-    testTextarea
+    formNone,
+    formSelect,
+    formRadio,
+    formCheckbox,
+    formTextarea
   },
   methods: {
     startDrag (e) {
       e.dataTransfer.setData('index', e.target.dataset.index)
     },
     handleDrop (e) {
-      this.comList = this.comList.filter(item => item.component !== 'testNone')
+      this.comList = this.comList.filter(item => item.component !== 'formNone')
       this.comList.splice(this.insertIndex, 0, JSON.parse(JSON.stringify(this.comtemp[this.component[e.dataTransfer.getData('index')]])))
       this.handleClick(this.insertIndex)
     },
@@ -81,13 +81,13 @@ export default {
     },
     removeVisCom (e) {
       console.log('3', e, this.insertIndex)
-      // this.comList = this.comList.filter(item => item.component !== 'testNone')
+      // this.comList = this.comList.filter(item => item.component !== 'formNone')
     },
     handleClick (i) {
       this.comInfo = this.comList[i]
     },
     allowDrop (event) { // 拖拽悬浮
-      this.comList = this.comList.filter(item => item.component !== 'testNone')
+      this.comList = this.comList.filter(item => item.component !== 'formNone')
       if (this.comList.length > 0) {
         this.insertIndex = this.getBoundary(this.comList, event.screenY)
         this.comList.splice(this.insertIndex, 0, this.comtemp[this.component[0]])
@@ -172,6 +172,7 @@ export default {
       font-size: .7rem;
       font-family: "\5FAE\8F6F\96C5\9ED1",Helvetica,"黑体",Arial,Tahoma;
       height: 100%;
+      font-size: 16px;
       &::-webkit-scrollbar {
         width: 4px;
       }

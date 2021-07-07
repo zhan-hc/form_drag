@@ -1,6 +1,5 @@
 <template>
   <div class="form-wrap">
-    <!-- <img src="../assets/images/delete.png" alt=""> -->
     <i class="iconfont icon-x" @click="handleClick"></i>
     <slot/>
   </div>

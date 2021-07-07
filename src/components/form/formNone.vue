@@ -18,7 +18,7 @@ export default {
 
 <style scoped lang="scss">
 .container{
-  border: 1px dashed red;
+  border: 2px dashed #FFA500;
   height: 50px;
 }
 </style>
