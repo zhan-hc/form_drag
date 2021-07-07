@@ -1,6 +1,7 @@
 <template>
   <div class="form-wrap">
-    <img src="../assets/images/delete.png" alt="" @click="handleClick">
+    <!-- <img src="../assets/images/delete.png" alt=""> -->
+    <i class="iconfont icon-x" @click="handleClick"></i>
     <slot/>
   </div>
 </template>
@@ -26,18 +27,20 @@ export default {
 <style scoped lang="scss">
 .form-wrap{
   position: relative;
-  img {
+  .icon-x {
     display: none;
   }
   &:hover{
     position: relative;
-    background: #ccc;
-    img {
+    background:#D3D3D3;
+    .icon-x {
       display: inline-block;
       position: absolute;
-      top: 0;
-      right: 0;
+      top: 5px;
+      right: 3px;
       cursor: pointer;
+      color: #fff;
+      font-size: 16px;
     }
   }
 }

@@ -6,10 +6,6 @@
         <i class="iconfont" :class="item.icon"></i>
         <div class="text" draggable :data-index="i+1">{{item.label}}</div>
       </div>
-
-      <!-- <div class="text" draggable :data-index="2">多行文本</div>
-      <div class="text" draggable :data-index="3">单项选择</div>
-      <div class="text" draggable :data-index="4">多项选择</div> -->
     </div>
     <div class="content" @drop="handleDrop" @dragover="overDrop($event)" @dragenter ="allowDrop($event)" @dragleave="removeVisCom">
       <div class="form-container">
@@ -20,7 +16,7 @@
       </div>
 
     </div>
-    <div class="content-right" v-if="comInfo">
+    <div class="content-right">
       <h3 style="text-align: center">组件属性</h3>
       <div class="set-item">
         <span>标题：</span>
