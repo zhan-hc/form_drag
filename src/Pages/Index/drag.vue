@@ -2,10 +2,14 @@
   <div class="wrap">
     <div class="content-left" @dragstart="startDrag">
       <h3 style="text-align: center">组件</h3>
-      <div class="text" draggable :data-index="1">单行文本</div>
-      <div class="text" draggable :data-index="2">多行文本</div>
+      <div class="drag-item" v-for="(item, i) in comtempList" :key="item.id">
+        <i class="iconfont" :class="item.icon"></i>
+        <div class="text" draggable :data-index="i+1">{{item.label}}</div>
+      </div>
+
+      <!-- <div class="text" draggable :data-index="2">多行文本</div>
       <div class="text" draggable :data-index="3">单项选择</div>
-      <div class="text" draggable :data-index="4">多项选择</div>
+      <div class="text" draggable :data-index="4">多项选择</div> -->
     </div>
     <div class="content" @drop="handleDrop" @dragover="overDrop($event)" @dragenter ="allowDrop($event)" @dragleave="removeVisCom">
       <div class="form-container">
@@ -35,9 +39,10 @@ import testInput from '../../components/testInput.vue'
 import testTextarea from '../../components/testTextarea.vue'
 import testCheckbox from '../../components/testCheckbox.vue'
 import testSelect from '../../components/testSelect.vue'
+import testRadio from '../../components/testRadio.vue'
 import testNone from '../../components/testNone.vue'
 import formWrap from '../../components/formWrap.vue'
-import { comtemp } from '../../assets/js/common'
+import { comtemp, comtempList } from '../../assets/js/common'
 export default {
   data () {
     return {
@@ -45,10 +50,12 @@ export default {
         '0': 'none',
         '1': 'input',
         '2': 'textArea',
-        '3': 'select',
-        '4': 'checkbox'
+        '3': 'radio',
+        '4': 'checkbox',
+        '5': 'select'
       },
       comtemp,
+      comtempList,
       comList: [],
       comInfo: {},
       insertIndex: 0
@@ -59,6 +66,7 @@ export default {
     formWrap,
     testNone,
     testSelect,
+    testRadio,
     testCheckbox,
     testTextarea
   },
@@ -120,15 +128,29 @@ export default {
 .wrap{
   display: flex;
   .content-left{
-    width: 300px;
+    width: 360px;
     height: 500px;
     border: 1px solid #000;
-    text-align: center;
-    .text {
+    .drag-item {
       display: inline-block;
       padding: 10px 20px;
-      border: 1px solid #000;
+      background: #DCDCDC;
       margin-bottom: 20px;
+      margin-right: 20px;
+      width: 130px;
+      box-sizing: border-box;
+      &:nth-child(odd){
+        margin-right: 0;
+      }
+      &:nth-child(even){
+        margin-left: 30px;
+      }
+      .iconfont{
+        font-size: 16px;
+      }
+      .text {
+        display: inline-block;
+      }
     }
   }
   .content{
