@@ -1,0 +1,16 @@
+{
+  "id": "2522531",
+  "name": "tencent-coupon",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "15167591",
+      "name": "left",
+      "font_class": "left_3",
+      "unicode": "e652",
+      "unicode_decimal": 58962
+    }
+  ]
+}
