@@ -41,6 +41,9 @@ export default {
       cursor: pointer;
       color: #fff;
       font-size: 16px;
+      &:hover{
+        color: #000;
+      }
     }
   }
 }
