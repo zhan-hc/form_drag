@@ -127,10 +127,14 @@ export default {
 <style scoped lang="scss">
 .wrap{
   display: flex;
+  background: rgb(247, 248, 250);
+  // min-width: 1400px;
   .content-left{
     width: 360px;
+    min-width: 360px;
     height: 500px;
-    border: 1px solid #000;
+    margin-right: 20px;
+    background: #fff;
     .drag-item {
       display: inline-block;
       padding: 10px 20px;
@@ -155,20 +159,44 @@ export default {
   }
   .content{
     flex: 1;
-    border: 1px solid #000;
-    overflow: scroll;
+    overflow: hidden;
     height: 99vh;
     min-width: 800px;
+    background: #fff;
+    box-shadow:#ccc 0 0 10px;
     .invent {
       display: none;
       border: 1px dashed red;
       height: 50px;
     }
+    .form-container{
+      overflow-x: hidden;
+      overflow-y: auto;
+      color: #000;
+      font-size: .7rem;
+      font-family: "\5FAE\8F6F\96C5\9ED1",Helvetica,"黑体",Arial,Tahoma;
+      height: 100%;
+      &::-webkit-scrollbar {
+        width: 4px;
+      }
+      &::-webkit-scrollbar-thumb {
+        border-radius: 10px;
+        -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+        background: rgba(0,0,0,0.2);
+      }
+      &::-webkit-scrollbar-track {
+        -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+        border-radius: 0;
+        background: rgba(0,0,0,0.1);
+      }
+    }
   }
   .content-right{
     width: 300px;
+    min-width: 300px;
     height: 500px;
-    border: 1px solid #000;
+    background: #fff;
+    margin-left: 20px;
     .set-item{
       margin-bottom: 10px;
       span{
