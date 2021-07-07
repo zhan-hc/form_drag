@@ -10,9 +10,9 @@
     <div class="content" @drop="handleDrop" @dragover="overDrop($event)" @dragenter ="allowDrop($event)" @dragleave="removeVisCom">
       <div class="form-container">
         <h1 style="text-align: center">xxxx表单</h1>
-        <from-wrap v-for="(item, i) in comList"  :key="i" :index='i' @removeCom="removeCom" @click.native="handleClick(i)">
+        <form-wrap v-for="(item, i) in comList"  :key="i" :index='i' @removeCom="removeCom" @click.native="handleClick(i)">
           <component class="content-comlist" :is="item.component" :data="item"/>
-        </from-wrap>
+        </form-wrap>
       </div>
 
     </div>
@@ -36,7 +36,7 @@ import testTextarea from '../../components/testTextarea.vue'
 import testCheckbox from '../../components/testCheckbox.vue'
 import testSelect from '../../components/testSelect.vue'
 import testNone from '../../components/testNone.vue'
-import fromWrap from '../../components/fromWrap.vue'
+import formWrap from '../../components/formWrap.vue'
 import { comtemp } from '../../assets/js/common'
 export default {
   data () {
@@ -56,7 +56,7 @@ export default {
   },
   components: {
     testInput,
-    fromWrap,
+    formWrap,
     testNone,
     testSelect,
     testCheckbox,
@@ -100,7 +100,7 @@ export default {
         sum += list[0].height / 2
         arr.push(sum)
         for (let i = 1; i < list.length; i++) {
-          sum += (list[i - 1].height + list[i].height) / 2
+          sum += (list[i - 1].height + list[i].height) / 2 // 以每个组件的中间作为临界值
           arr.push(sum)
         }
         for (let i = 0; i < arr.length; i++) { // 根据边界数组返回插入的index
