@@ -10,7 +10,6 @@ export default {
   props: ['index'],
   data () {
     return {
-
     }
   },
   components: {
@@ -26,12 +25,13 @@ export default {
 <style scoped lang="scss">
 .form-wrap{
   position: relative;
+  margin-bottom: 10px;
   .icon-x {
     display: none;
   }
   &:hover{
     position: relative;
-    background:#D3D3D3;
+    border: 1px dashed #ff9600;
     .icon-x {
       display: inline-block;
       position: absolute;
