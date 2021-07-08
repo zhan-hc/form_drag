@@ -32,6 +32,7 @@ export default {
   &:hover{
     position: relative;
     border: 1px dashed #ff9600;
+    cursor: move;
     .icon-x {
       display: inline-block;
       position: absolute;
