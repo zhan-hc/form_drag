@@ -23,15 +23,15 @@ const comtemp = {
     }
   },
   'textArea': {
-    component: 'formTextarea', // 组件名称，需要提前注册到 Vue
-    label: '多行文本', // 左侧组件列表中显示的名字
-    propValue: 'icon-duohangwenben', // 组件所使用的值
-    icon: '', // 左侧组件列表中显示的名字
+    component: 'formTextarea',
+    label: '多行文本',
+    propValue: 'icon-duohangwenben',
+    icon: '',
     height: 100,
     placeholder: '请输入多行文本内容',
-    animations: [], // 动画列表
-    events: {}, // 事件列表
-    style: { // 组件样式
+    animations: [],
+    events: {},
+    style: {
       width: 200,
       height: 33,
       fontSize: 14,
@@ -43,13 +43,13 @@ const comtemp = {
     }
   },
   'radio': {
-    component: 'formRadio', // 组件名称，需要提前注册到 Vue
-    label: '单项选择', // 左侧组件列表中显示的名字
-    propValue: '', // 组件所使用的值
-    icon: 'icon-danxiangxuanze', // 左侧组件列表中显示的名字
+    component: 'formRadio',
+    label: '单项选择',
+    propValue: '',
+    icon: 'icon-danxiangxuanze',
     height: 114,
-    animations: [], // 动画列表
-    events: {}, // 事件列表
+    animations: [],
+    events: {},
     choices: [
       {
         _id: 1001,
@@ -67,7 +67,7 @@ const comtemp = {
         selected: false
       }
     ],
-    style: { // 组件样式
+    style: {
       width: 200,
       height: 33,
       fontSize: 14,
@@ -79,10 +79,10 @@ const comtemp = {
     }
   },
   'checkbox': {
-    component: 'formCheckbox', // 组件名称，需要提前注册到 Vue
-    label: '多项选择', // 左侧组件列表中显示的名字
-    propValue: '', // 组件所使用的值
-    icon: 'icon-duoxiangxuanze', // 左侧组件列表中显示的名字
+    component: 'formCheckbox',
+    label: '多项选择',
+    propValue: '',
+    icon: 'icon-duoxiangxuanze',
     height: 114,
     choices: [
       {
@@ -101,9 +101,9 @@ const comtemp = {
         selected: false
       }
     ],
-    animations: [], // 动画列表
-    events: {}, // 事件列表
-    style: { // 组件样式
+    animations: [],
+    events: {},
+    style: {
       width: 200,
       height: 33,
       fontSize: 14,
@@ -115,15 +115,15 @@ const comtemp = {
     }
   },
   'select': {
-    component: 'formSelect', // 组件名称，需要提前注册到 Vue
-    label: '下拉框', // 左侧组件列表中显示的名字
-    propValue: '', // 组件所使用的值
-    icon: 'icon-xialakuang1', // 左侧组件列表中显示的名字
+    component: 'formSelect',
+    label: '下拉框',
+    propValue: '',
+    icon: 'icon-xialakuang1',
     height: 50,
     placeholder: '请选择',
-    animations: [], // 动画列表
-    events: {}, // 事件列表
-    style: { // 组件样式
+    animations: [],
+    events: {},
+    style: {
       width: 200,
       height: 33,
       fontSize: 14,
@@ -138,26 +138,31 @@ const comtemp = {
 const comtempList = [
   {
     id: 1001,
+    type: 'input',
     label: '单行文本',
     icon: 'icon-mobanzhizuo_danhangwenben'
   },
   {
     id: 1002,
+    type: 'textArea',
     label: '多行文本',
     icon: 'icon-duohangwenben'
   },
   {
     id: 1003,
+    type: 'radio',
     label: '单项选择',
     icon: 'icon-danxiangxuanze'
   },
   {
     id: 1004,
+    type: 'checkbox',
     label: '多项选择',
     icon: 'icon-duoxiangxuanze'
   },
   {
     id: 1005,
+    type: 'select',
     label: '下拉框',
     icon: 'icon-xialakuang1'
   }

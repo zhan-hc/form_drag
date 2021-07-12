@@ -10,13 +10,13 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'invent',
-      component: invent
-    },
-    {
-      path: '/drag',
       name: 'drag',
       component: drag
+    },
+    {
+      path: '/invent',
+      name: 'invent',
+      component: invent
     }
   ]
 })

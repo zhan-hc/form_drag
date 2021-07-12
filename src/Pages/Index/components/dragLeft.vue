@@ -4,8 +4,9 @@
     <div class="drag-item"
       draggable
       :key="item.id"
-      :data-index="i+1"
-      v-for="(item, i) in comtempList"
+      :data-type="item.type"
+      v-for="item in comtempList"
+      @click="handleClick(item.type)"
     >
       <i class="iconfont" :class="item.icon"></i>
       <div class="text">{{item.label}}</div>
@@ -30,8 +31,12 @@ export default {
   },
   methods: {
     startDrag (e) {
-      e.dataTransfer.setData('index', e.target.dataset.index)
+      // console.log('1111', e)
+      e.dataTransfer.setData('type', e.target.dataset.type)
       this.$emit('handleChange', 0)
+    },
+    handleClick (type) {
+      this.$emit('handleClick', type)
     }
   }
 }

@@ -1,6 +1,9 @@
 <template>
   <div class="wrap">
-    <drag-left :comtempList="comtempList" @handleChange="handleChange"/>
+    <drag-left
+    :comtempList="comtempList"
+    @handleClick="handleClickAdd"
+    @handleChange="handleChange"/>
     <div class="content"
       @drop="handleDrop"
       @dragover="overDrop($event)"
@@ -46,14 +49,6 @@ import { comtemp, comtempList } from '../../assets/js/common'
 export default {
   data () {
     return {
-      component: {
-        '0': 'none',
-        '1': 'input',
-        '2': 'textArea',
-        '3': 'radio',
-        '4': 'checkbox',
-        '5': 'select'
-      },
       comtemp,
       comtempList,
       comList: [],
@@ -83,7 +78,7 @@ export default {
     handleDrop (e) {
       this.comList = this.comList.filter(item => item.component !== 'formNone')
       if (this.changestatus === 0) {
-        this.comList.splice(this.insertIndex, 0, JSON.parse(JSON.stringify(this.comtemp[this.component[e.dataTransfer.getData('index')]])))
+        this.comList.splice(this.insertIndex, 0, JSON.parse(JSON.stringify(this.comtemp[e.dataTransfer.getData('type')])))
         this.handleClick(this.insertIndex)
       }
     },
@@ -96,6 +91,10 @@ export default {
     handleClick (i) {
       this.clickIndex = i
       this.comInfo = this.comList[i]
+    },
+    handleClickAdd (type) {
+      this.comList.push(JSON.parse(JSON.stringify(this.comtemp[type])))
+      this.handleClick(this.comList.length - 1)
     },
     allowDrop (event) { // 拖拽悬浮
       if (this.changestatus === 1) {
@@ -113,7 +112,7 @@ export default {
         this.comList = this.comList.filter(item => item.component !== 'formNone')
         if (this.comList.length > 0) {
           this.insertIndex = this.getBoundary(this.comList, event.screenY)
-          this.comList.splice(this.insertIndex, 0, this.comtemp[this.component[0]])
+          this.comList.splice(this.insertIndex, 0, this.comtemp.none)
         }
       }
     },
