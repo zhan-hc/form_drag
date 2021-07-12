@@ -12,15 +12,19 @@
     <div class="set-item" v-if="comInfo.choices">
       <span>选项：</span>
       <div class="item-wrap" v-if="comInfo.component==='formRadio'">
-        <div class="radio-item" v-for="item in comInfo.choices" :key="item._id">
+        <div class="radio-item" v-for="(item,i) in comInfo.choices" :key="item._id">
           <input @change="handleChangeRadio(item._id)" type="radio" :checked="item.selected">
           <input v-model="item.value" type="text" name="">
+          <i class="iconfont icon-add" @click="handleAdd(i)"></i>
+          <i class="iconfont icon-reduce" @click="handleDelete(i)"></i>
         </div>
       </div>
       <div class="item-wrap" v-else>
-        <div class="checkbox-item" v-for="item in comInfo.choices" :key="item._id">
+        <div class="checkbox-item" v-for="(item, i) in comInfo.choices" :key="item._id">
           <input @change="handleChangeBox(item)" type="checkbox" :checked="item.selected">
           <input v-model="item.value" type="text" name="">
+            <i class="iconfont icon-add" @click="handleAdd(i)"></i>
+            <i class="iconfont icon-reduce" @click="handleDelete(i)"></i>
         </div>
       </div>
     </div>
@@ -42,6 +46,11 @@ export default {
 
     }
   },
+  computed: {
+    randomId () {
+      return (Math.random() * 10000000).toString(16).substr(0, 4) + '-' + (new Date()).getTime() + '-' + Math.random().toString().substr(2, 5)
+    }
+  },
   methods: {
     handleChangeRadio (id) {
       this.comInfo.choices.forEach(item => {
@@ -54,6 +63,17 @@ export default {
     },
     handleChangeBox (item) {
       item.selected = !item.selected
+    },
+    handleAdd (i) {
+      this.comInfo.choices.splice(i + 1, 0,
+        {
+          _id: this.randomId,
+          value: '选项',
+          selected: false
+        })
+    },
+    handleDelete (i) {
+      this.comInfo.choices.splice(i, 1)
     }
   }
 }
@@ -72,16 +92,29 @@ export default {
     margin-bottom: 10px;
     span{
       display: inline-block;
-      width: 80px;
-      text-align: right;
       font-weight: bold;
     }
     input[type=text]{
       width: 160px;
+      margin-right: 5px;
     }
     input[type=radio]{
-      margin-left: 40px;
+      margin-left: 20px;
       margin-top: 10px;
+    }
+    input[type=checkbox]{
+      margin-left: 20px;
+      margin-top: 10px;
+    }
+    .iconfont{
+      font-size: 14px;
+      &:hover{
+        cursor: pointer;
+        color: #ff9600;
+      }
+    }
+    .icon-add{
+      margin-right: 5px;
     }
   }
 }
