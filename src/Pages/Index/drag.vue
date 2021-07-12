@@ -8,7 +8,6 @@
       @drop="handleDrop"
       @dragover="overDrop($event)"
       @dragenter ="allowDrop($event)"
-      @dragleave="removeVisCom"
     >
       <h1 style="text-align: center">xxxx表单</h1>
       <div
@@ -20,7 +19,7 @@
           draggable
           :key="i"
           :index='i'
-          :name="`wrap${i}`"
+          :data-index="i"
           v-for="(item, i) in comList"
           :class="{'active': clickIndex === i}"
           @removeCom="removeCom"
@@ -71,8 +70,7 @@ export default {
       this.changestatus = status
     },
     startDragCom (e) {
-      let eq = e.target.attributes.getNamedItem('name').textContent
-      this.dragObjEq = this.isNull(eq) ? null : parseInt(eq.slice(-1))
+      this.dragObjEq = parseInt(e.target.dataset.index)
       this.changestatus = 1
     },
     handleDrop (e) {
@@ -86,9 +84,6 @@ export default {
       this.comList.splice(i, 1)
       this.comInfo = {}
       console.log(this.comInfo)
-    },
-    removeVisCom (e) {
-      // console.log('3', this.insertIndex)
     },
     handleClick (i) {
       this.clickIndex = i
