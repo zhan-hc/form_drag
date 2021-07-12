@@ -47,10 +47,26 @@ const comtemp = {
     label: '单项选择', // 左侧组件列表中显示的名字
     propValue: '', // 组件所使用的值
     icon: 'icon-danxiangxuanze', // 左侧组件列表中显示的名字
-    height: 50,
-    placeholder: '请选择',
+    height: 114,
     animations: [], // 动画列表
     events: {}, // 事件列表
+    choices: [
+      {
+        _id: 1001,
+        value: '选项',
+        selected: false
+      },
+      {
+        _id: 1002,
+        value: '选项',
+        selected: false
+      },
+      {
+        _id: 1003,
+        value: '选项',
+        selected: false
+      }
+    ],
     style: { // 组件样式
       width: 200,
       height: 33,
@@ -67,8 +83,24 @@ const comtemp = {
     label: '多项选择', // 左侧组件列表中显示的名字
     propValue: '', // 组件所使用的值
     icon: 'icon-duoxiangxuanze', // 左侧组件列表中显示的名字
-    height: 50,
-    // placeholder: '请选择',
+    height: 114,
+    choices: [
+      {
+        _id: 1001,
+        value: '选项',
+        selected: false
+      },
+      {
+        _id: 1002,
+        value: '选项',
+        selected: false
+      },
+      {
+        _id: 1003,
+        value: '选项',
+        selected: false
+      }
+    ],
     animations: [], // 动画列表
     events: {}, // 事件列表
     style: { // 组件样式

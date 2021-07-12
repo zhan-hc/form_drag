@@ -1,9 +1,9 @@
 <template>
-  <div class="checkbox-wrap">
-    <span>{{data.label}}：</span>
-    <input disabled type="radio" name="choose" value="choose">选项1&nbsp;&nbsp;
-    <input disabled type="radio" name="choose" value="choose">选项1&nbsp;&nbsp;
-    <input disabled type="radio" name="choose" value="choose">选项1&nbsp;&nbsp;
+  <div class="radio-wrap">
+    <span>{{data.label}}</span>
+    <div class="radio-item" v-for="item in data.choices" :key="item._id">
+      <input disabled type="radio" :checked="item.selected">{{item.value}}
+    </div>
   </div>
 </template>
 
@@ -20,14 +20,20 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.checkbox-wrap{
-  display: flex;
-  height: 50px;
+.radio-wrap{
   align-items: center;
-  padding:0 20px;
+  padding:10px 20px;
   span{
+    display: inline-block;
     width: 100px;
     text-align: right;
+    margin-bottom: 10px;
+  }
+  .radio-item{
+    margin-left: 40px;
+    input{
+      margin-right: 10px;
+    }
   }
 }
 </style>

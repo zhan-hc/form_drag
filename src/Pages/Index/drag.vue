@@ -1,17 +1,6 @@
 <template>
   <div class="wrap">
-    <div class="content-left" @dragstart="startDrag">
-      <h3 style="text-align: center">组件</h3>
-      <div class="drag-item"
-        draggable
-        :key="item.id"
-        :data-index="i+1"
-        v-for="(item, i) in comtempList"
-      >
-        <i class="iconfont" :class="item.icon"></i>
-        <div class="text">{{item.label}}</div>
-      </div>
-    </div>
+    <drag-left :comtempList="comtempList" @handleChange="handleChange"/>
     <div class="content"
       @drop="handleDrop"
       @dragover="overDrop($event)"
@@ -33,6 +22,7 @@
           :class="{'active': clickIndex === i}"
           @removeCom="removeCom"
           @click.native="handleClick(i)"
+          @drop="handleDrop"
         >
           <component
             :data="item"
@@ -42,30 +32,16 @@
           />
         </form-wrap>
       </div>
-
     </div>
-    <div class="content-right" ref="wrap">
-      <h3 style="text-align: center">组件属性</h3>
-      <div class="set-item">
-        <span>标题：</span>
-        <input type="text" v-model="comInfo.label"/>
-      </div>
-      <div class="set-item" v-if="comInfo.placeholder">
-        <span>提示语：</span>
-        <input type="text" v-model="comInfo.placeholder"/>
-      </div>
-    </div>
+    <drag-right :comInfo.sync="comInfo"/>
   </div>
 </template>
 
 <script>
-import formInput from '../../components/form/formInput.vue'
-import formTextarea from '../../components/form/formTextarea.vue'
-import formCheckbox from '../../components/form/formCheckbox.vue'
-import formSelect from '../../components/form/formSelect.vue'
-import formRadio from '../../components/form/formRadio.vue'
-import formNone from '../../components/form/formNone.vue'
+import formList from '../../components/form/formList.js'
 import formWrap from '../../components/form/formWrap.vue'
+import dragLeft from './components/dragLeft.vue'
+import dragRight from './components/dragRight.vue'
 import { comtemp, comtempList } from '../../assets/js/common'
 export default {
   data () {
@@ -85,22 +61,19 @@ export default {
       clickIndex: null,
       insertIndex: 0,
       changestatus: 0, // 0:左边拖拽;1:中间拖拽
-      dragObjEq: null
+      dragObjEq: null,
+      radioVal: null
     }
   },
   components: {
-    formInput,
     formWrap,
-    formNone,
-    formSelect,
-    formRadio,
-    formCheckbox,
-    formTextarea
+    dragLeft,
+    dragRight,
+    ...formList
   },
   methods: {
-    startDrag (e) {
-      e.dataTransfer.setData('index', e.target.dataset.index)
-      this.changestatus = 0
+    handleChange (status) {
+      this.changestatus = status
     },
     startDragCom (e) {
       let eq = e.target.attributes.getNamedItem('name').textContent
@@ -114,7 +87,6 @@ export default {
         this.handleClick(this.insertIndex)
       }
     },
-
     removeCom (i) {
       this.comList.splice(i, 1)
     },
@@ -189,38 +161,6 @@ export default {
 .wrap{
   display: flex;
   background: rgb(247, 248, 250);
-  .content-left{
-    width: 360px;
-    min-width: 360px;
-    height: 500px;
-    margin-right: 20px;
-    background: #fff;
-    .drag-item {
-      display: inline-block;
-      padding: 10px 20px;
-      background: #DCDCDC;
-      margin-bottom: 20px;
-      margin-right: 20px;
-      width: 130px;
-      box-sizing: border-box;
-      cursor: pointer;
-      &:hover{
-        border: 1px dashed #ff9600;
-      }
-      &:nth-child(odd){
-        margin-right: 0;
-      }
-      &:nth-child(even){
-        margin-left: 30px;
-      }
-      .iconfont{
-        font-size: 16px;
-      }
-      .text {
-        display: inline-block;
-      }
-    }
-  }
   .content{
     flex: 1;
     overflow: hidden;
@@ -256,22 +196,7 @@ export default {
       }
       .active{
         background: #f5f5f5;
-        border: 1px dashed #ff9600;
-      }
-    }
-  }
-  .content-right{
-    width: 300px;
-    min-width: 300px;
-    height: 500px;
-    background: #fff;
-    margin-left: 20px;
-    .set-item{
-      margin-bottom: 10px;
-      span{
-        display: inline-block;
-        width: 80px;
-        text-align: right;
+        // border: 1px dashed #ff9600;
       }
     }
   }
