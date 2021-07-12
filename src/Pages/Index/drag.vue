@@ -84,6 +84,8 @@ export default {
     },
     removeCom (i) {
       this.comList.splice(i, 1)
+      this.comInfo = {}
+      console.log(this.comInfo)
     },
     removeVisCom (e) {
       // console.log('3', this.insertIndex)

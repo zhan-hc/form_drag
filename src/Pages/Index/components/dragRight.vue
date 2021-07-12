@@ -1,7 +1,7 @@
 <template>
   <div class="content-right">
     <h3 style="text-align: center">组件属性</h3>
-    <div class="set-item">
+    <div class="set-item" v-if="comInfo.label">
       <span>标题：</span>
       <input type="text" v-model="comInfo.label"/>
     </div>
@@ -28,6 +28,7 @@
         </div>
       </div>
     </div>
+    <p v-if="!comInfo">请选择一个字段设置属性</p>
   </div>
 </template>
 
@@ -37,7 +38,7 @@ export default {
     comInfo: {
       type: Object,
       default () {
-        return null
+        return {}
       }
     }
   },

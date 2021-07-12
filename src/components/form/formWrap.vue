@@ -1,6 +1,6 @@
 <template>
   <div class="form-wrap">
-    <i class="iconfont icon-x" @click="handleClick"></i>
+    <i class="iconfont icon-template_delete" @click="handleClick"></i>
     <slot/>
   </div>
 </template>
@@ -26,24 +26,30 @@ export default {
 .form-wrap{
   position: relative;
   margin-bottom: 10px;
-  .icon-x {
+  padding-right: 20px;
+  .icon-template_delete {
     display: none;
   }
   &:hover{
     position: relative;
     border: 1px dashed #ff9600;
     cursor: move;
-    .icon-x {
+  }
+  &.active:hover{
+    position: relative;
+    border: 1px dashed #ff9600;
+    cursor: move;
+    .icon-template_delete {
+      background: #fff;
+      padding: 3px;
+      border-radius: 50%;
       display: inline-block;
       position: absolute;
       top: 5px;
-      right: 3px;
+      right: 5px;
       cursor: pointer;
-      color: #fff;
-      font-size: 16px;
-      &:hover{
-        color: #000;
-      }
+      color: #ff0000;
+      font-size: 14px;
     }
   }
 }
