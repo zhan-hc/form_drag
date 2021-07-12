@@ -33,6 +33,10 @@
             :is="item.component"
           />
         </form-wrap>
+        <div class="no-com" v-if="!comList.length">
+          <img src="@/assets/images/no-field-pic.png" alt="">
+          <p>从左侧点击或者拖拽添加字段</p>
+        </div>
       </div>
     </div>
     <drag-right :comInfo.sync="comInfo"/>
@@ -177,6 +181,9 @@ export default {
       font-family: "\5FAE\8F6F\96C5\9ED1",Helvetica,"黑体",Arial,Tahoma;
       height: 100%;
       font-size: 16px;
+      .no-com{
+        text-align: center;
+      }
       &::-webkit-scrollbar {
         width: 4px;
       }

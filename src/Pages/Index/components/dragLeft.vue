@@ -31,7 +31,6 @@ export default {
   },
   methods: {
     startDrag (e) {
-      // console.log('1111', e)
       e.dataTransfer.setData('type', e.target.dataset.type)
       this.$emit('handleChange', 0)
     },

@@ -28,7 +28,7 @@
         </div>
       </div>
     </div>
-    <p v-if="!comInfo">请选择一个字段设置属性</p>
+    <p v-if="!comInfo.label">请选择一个字段设置属性</p>
   </div>
 </template>
 
