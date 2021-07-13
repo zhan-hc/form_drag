@@ -14,6 +14,7 @@
         ref="container"
         class="form-container"
         @dragstart="startDragCom"
+        @dragleave="leaveDrag"
         >
         <form-wrap
           draggable
@@ -87,7 +88,12 @@ export default {
     removeCom (i) {
       this.comList.splice(i, 1)
       this.comInfo = {}
-      console.log(this.comInfo)
+    },
+    leaveDrag (e) {
+      // 当拖动元素离开可拖放内容区时(380指的是左边区域的width，当拖拽鼠标进入左边区域时)
+      if (this.changestatus === 0 && e.clientX < 380) {
+        this.comList = this.comList.filter(item => item.component !== 'formNone')
+      }
     },
     handleClick (i) {
       this.clickIndex = i
@@ -125,7 +131,7 @@ export default {
         let arr = []
         let sum = 185 // 默认值（表单开始的top距离）
         var q = 0
-        sum += list[0].height / 2 + 10 // 10指的margin-bottom
+        sum += list[0].height / 2 + 10 // 10指的是每个字段的margin-bottom
         arr.push(sum)
         for (let i = 1; i < list.length; i++) {
           sum += (list[i - 1].height + list[i].height) / 2 // 以每个组件的中间作为临界值
