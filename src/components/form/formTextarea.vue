@@ -1,6 +1,6 @@
 <template>
   <div class="textarea-wrap">
-    <span>{{data.label}}：</span>
+    <span>{{data.label}}</span>
     <textarea name="" id="" rows="5" :placeholder="data.placeholder" disabled></textarea>
   </div>
 </template>
@@ -20,15 +20,17 @@ export default {
 
 <style scoped lang="scss">
 .textarea-wrap{
-  display: flex;
-  padding:10px 20px;
-  box-sizing: border-box;
+  padding:20px;
   span{
-    width: 100px;
-    text-align: right;
+    display: block;
+    margin-left: 20px;
+    margin-bottom: 10px;
   }
   textarea{
-    flex: 1;
+    margin-left: 20px;
+    width: 96%;
+    padding-left: 10px;
+    padding-top: 10px;
   }
 }
 </style>

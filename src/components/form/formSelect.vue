@@ -1,6 +1,6 @@
 <template>
   <div class="select-wrap">
-    <span>{{data.label}}：</span>
+    <span>{{data.label}}</span>
     <select disabled>
       <option value="">{{data.placeholder}}</option>
       <!-- <option v-for="item in opList" :value ="item.value" :key="item.id">{{item.label}}</option> -->
@@ -22,16 +22,17 @@ export default {
 
 <style scoped lang="scss">
 .select-wrap{
-  display: flex;
-  height: 50px;
-  align-items: center;
-  padding:0 20px;
+  padding:20px;
   span{
-    width: 100px;
-    text-align: right;
+    display: block;
+    margin-left: 20px;
+    margin-bottom: 10px;
   }
   select{
+    margin-left: 20px;
     width: 300px;
+    height: 30px;
+    padding-left: 10px;
   }
 }
 </style>

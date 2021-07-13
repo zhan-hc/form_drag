@@ -1,6 +1,6 @@
 <template>
 <div class="input-wrap">
-  <span>{{data.label}}：</span>
+  <span>{{data.label}}</span>
   <input type="text" :placeholder="data.placeholder" disabled>
 </div>
 
@@ -21,16 +21,17 @@ export default {
 
 <style scoped lang="scss">
 .input-wrap{
-  display: flex;
-  height: 50px;
-  align-items: center;
-  padding:0 20px;
+  padding:20px;
   span{
-    width: 100px;
-    text-align: right;
+    display: block;
+    margin-left: 20px;
+    margin-bottom: 10px;
   }
   input{
-    flex: 1;
+    margin-left: 20px;
+    width: 96%;
+    height: 30px;
+    padding-left: 10px;
   }
 }
 

@@ -25,8 +25,7 @@ export default {
   padding:10px 20px;
   span{
     display: inline-block;
-    width: 100px;
-    text-align: right;
+    margin-left: 20px;
     margin-bottom: 10px;
   }
   .radio-item{

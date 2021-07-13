@@ -87,7 +87,7 @@ export default {
   height: 500px;
   background: #fff;
   margin-left: 20px;
-  padding: 20px;
+  padding: 0 20px 0;
   box-sizing: border-box;
   .set-item{
     margin-bottom: 10px;

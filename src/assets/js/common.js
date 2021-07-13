@@ -8,7 +8,7 @@ const comtemp = {
     propValue: '', // 组件所使用的值
     icon: 'icon-mobanzhizuo_danhangwenben', // 左侧组件列表中显示的名字
     animations: [], // 动画列表
-    height: 50,
+    height: 107,
     placeholder: '请输入文本内容',
     events: {}, // 事件列表
     style: { // 组件样式
@@ -27,7 +27,7 @@ const comtemp = {
     label: '多行文本',
     propValue: 'icon-duohangwenben',
     icon: '',
-    height: 100,
+    height: 164,
     placeholder: '请输入多行文本内容',
     animations: [],
     events: {},
@@ -119,7 +119,7 @@ const comtemp = {
     label: '下拉框',
     propValue: '',
     icon: 'icon-xialakuang1',
-    height: 50,
+    height: 101,
     placeholder: '请选择',
     animations: [],
     events: {},

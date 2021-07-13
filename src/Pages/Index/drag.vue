@@ -118,7 +118,7 @@ export default {
       } else {
         this.comList = this.comList.filter(item => item.component !== 'formNone')
         if (this.comList.length > 0) {
-          this.insertIndex = this.getBoundary(this.comList, event.screenY)
+          this.insertIndex = this.getBoundary(this.comList, event.screenY + this.$refs.container.scrollTop)
           this.comList.splice(this.insertIndex, 0, this.comtemp.none)
         }
       }
@@ -169,23 +169,14 @@ export default {
   background: rgb(247, 248, 250);
   .content{
     flex: 1;
-    overflow: hidden;
-    height: 99vh;
     min-width: 800px;
     background: #fff;
     box-shadow:#ccc 0 0 10px;
-    .invent {
-      display: none;
-      border: 1px dashed red;
-      height: 50px;
-    }
     .form-container{
-      overflow-x: hidden;
+      overflow: hidden;
       overflow-y: auto;
       color: #000;
-      font-size: .7rem;
-      font-family: "\5FAE\8F6F\96C5\9ED1",Helvetica,"黑体",Arial,Tahoma;
-      height: 100%;
+      height: 850px;
       font-size: 16px;
       .no-com{
         text-align: center;
