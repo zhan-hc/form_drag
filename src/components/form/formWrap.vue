@@ -1,6 +1,7 @@
 <template>
   <div class="form-wrap">
-    <i class="iconfont icon-template_delete" @click="handleClick"></i>
+    <i class="iconfont icon-delete" @click="handleClickDelete"></i>
+    <i class="iconfont icon-copy2" @click="handleClickCopy"></i>
     <slot/>
   </div>
 </template>
@@ -15,8 +16,11 @@ export default {
   components: {
   },
   methods: {
-    handleClick () {
+    handleClickDelete () {
       this.$emit('removeCom', this.index)
+    },
+    handleClickCopy () {
+      this.$emit('copyCom', this.index)
     }
   }
 }
@@ -27,7 +31,8 @@ export default {
   position: relative;
   margin-bottom: 10px;
   padding-right: 20px;
-  .icon-template_delete {
+  .icon-delete,
+  .icon-copy2 {
     display: none;
   }
   &:hover{
@@ -39,9 +44,9 @@ export default {
     position: relative;
     border: 1px dashed #ff9600;
     cursor: move;
-    .icon-template_delete {
+    .icon-delete{
       background: #fff;
-      padding: 3px;
+      padding: 7px;
       border-radius: 50%;
       display: inline-block;
       position: absolute;
@@ -50,6 +55,18 @@ export default {
       cursor: pointer;
       color: #ff0000;
       font-size: 14px;
+    }
+    .icon-copy2 {
+      background: #fff;
+      padding: 7px;
+      border-radius: 50%;
+      display: inline-block;
+      position: absolute;
+      top: 5px;
+      right: 45px;
+      cursor: pointer;
+      font-size: 14px;
+      color: #808080;
     }
   }
 }

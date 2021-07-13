@@ -24,6 +24,7 @@
           v-for="(item, i) in comList"
           :class="{'active': clickIndex === i}"
           @removeCom="removeCom"
+          @copyCom="copyCom"
           @click.native="handleClick(i)"
           @drop="handleDrop"
         >
@@ -88,6 +89,9 @@ export default {
     removeCom (i) {
       this.comList.splice(i, 1)
       this.comInfo = {}
+    },
+    copyCom (i) {
+      this.comList.splice(i + 1, 0, JSON.parse(JSON.stringify(this.comList[i])))
     },
     leaveDrag (e) {
       // 当拖动元素离开可拖放内容区时(380指的是左边区域的width，当拖拽鼠标进入左边区域时)
