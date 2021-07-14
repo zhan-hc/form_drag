@@ -47,11 +47,6 @@ export default {
 
     }
   },
-  computed: {
-    randomId () {
-      return (Math.random() * 10000000).toString(16).substr(0, 4) + '-' + (new Date()).getTime() + '-' + Math.random().toString().substr(2, 5)
-    }
-  },
   methods: {
     handleChangeRadio (id) {
       this.comInfo.choices.forEach(item => {
@@ -68,13 +63,21 @@ export default {
     handleAdd (i) {
       this.comInfo.choices.splice(i + 1, 0,
         {
-          _id: this.randomId,
+          _id: this.randomId(),
           value: '选项',
           selected: false
         })
     },
     handleDelete (i) {
       this.comInfo.choices.splice(i, 1)
+    },
+    randomId () { // 生成不重复的随机字符串
+      let str = ''
+      let chars = 'ABCDEFGHJKMNPQRSTWXYZabcdefhijkmnprstwxyz'
+      for (let i = 0; i < 6; i++) {
+        str += chars[Math.floor(Math.random() * chars.length)]
+      }
+      return str + '_' + (new Date()).getTime().toString()
     }
   }
 }
