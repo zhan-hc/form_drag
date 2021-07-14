@@ -45,7 +45,8 @@ export default {
 .content-left{
   width: 360px;
   min-width: 360px;
-  height: 500px;
+  height: 900px;
+  overflow-y: auto;
   margin-right: 20px;
   background: #fff;
   .drag-item {
@@ -57,6 +58,7 @@ export default {
     width: 130px;
     box-sizing: border-box;
     cursor: pointer;
+    border:1px solid transparent;
     &:hover{
       border: 1px dashed #ff9600;
     }

@@ -84,8 +84,9 @@ export default {
 .content-right{
   width: 300px;
   min-width: 300px;
-  height: 500px;
+  height: 900px;
   background: #fff;
+  overflow-y: auto;
   margin-left: 20px;
   padding: 0 20px 0;
   box-sizing: border-box;
@@ -117,6 +118,9 @@ export default {
     .icon-add{
       margin-right: 5px;
     }
+  }
+  p{
+    text-align: center;
   }
 }
 </style>
