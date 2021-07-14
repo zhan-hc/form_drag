@@ -3,11 +3,7 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-// import 'lib-flexible/flexible.js'
 import './assets/iconfont/iconfont.css'
-import axios from 'axios'
-import './mock'
-Vue.prototype.$axios = axios
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */
