@@ -151,14 +151,9 @@ export default {
       this.comList1 = this.comList.map(item => {
         return {...item, disabled: false}
       })
-      console.log(this.comList1)
     },
     handleClose (done) {
-      this.$confirm('确认关闭？')
-        .then(_ => {
-          done()
-        })
-        .catch(_ => {})
+      this.dialogVisible = false
     },
     getBoundary (list, scY) { // 获取临界值
       if (list.length > 0) {
