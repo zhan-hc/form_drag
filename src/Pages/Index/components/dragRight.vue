@@ -72,12 +72,10 @@ export default {
         }
       )
       this.comInfo.height += 21
-      console.log(this.comInfo.height)
     },
     handleDelete (i) {
       this.comInfo.choices.splice(i, 1)
       this.comInfo.height -= 21
-      console.log(this.comInfo.height)
     },
     randomId () { // 生成不重复的随机字符串
       let str = ''
