@@ -2,6 +2,7 @@
   <div class="wrap">
     <drag-left
     :comtempList="comtempList"
+    @showDialog="showDialog"
     @handleClick="handleClickAdd"
     @handleChange="handleChange"/>
     <div class="content"
@@ -42,6 +43,19 @@
       </div>
     </div>
     <drag-right :comInfo.sync="comInfo"/>
+    <el-dialog
+      title="表单预览"
+      :visible.sync="dialogVisible"
+      width="30%"
+      :before-close="handleClose">
+      <div :key="i" v-for="(item, i) in comList1" >
+        <component :data="item" :is="item.component" />
+      </div>
+      <span slot="footer" class="dialog-footer">
+        <el-button @click="dialogVisible = false">取 消</el-button>
+        <el-button type="primary" @click="dialogVisible = false">确 定</el-button>
+      </span>
+    </el-dialog>
   </div>
 </template>
 
@@ -57,12 +71,14 @@ export default {
       comtemp,
       comtempList,
       comList: [],
+      comList1: [],
       comInfo: {},
       clickIndex: null,
       insertIndex: 0,
       changestatus: 0, // 0:左边拖拽;1:中间拖拽
       dragObjEq: null,
-      radioVal: null
+      radioVal: null,
+      dialogVisible: false
     }
   },
   components: {
@@ -129,6 +145,20 @@ export default {
     },
     overDrop (event) {
       event.preventDefault()
+    },
+    showDialog (val) {
+      this.dialogVisible = val
+      this.comList1 = this.comList.map(item => {
+        return {...item, disabled: false}
+      })
+      console.log(this.comList1)
+    },
+    handleClose (done) {
+      this.$confirm('确认关闭？')
+        .then(_ => {
+          done()
+        })
+        .catch(_ => {})
     },
     getBoundary (list, scY) { // 获取临界值
       if (list.length > 0) {

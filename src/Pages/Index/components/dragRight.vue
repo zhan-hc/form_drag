@@ -11,12 +11,12 @@
     </div>
     <div class="set-item" v-if="comInfo.choices">
       <span>选项：</span>
-      <div class="item-wrap" v-if="comInfo.component==='formRadio'">
+      <div class="item-wrap" v-if="comInfo.component!=='formCheckbox'">
         <div class="radio-item" v-for="(item,i) in comInfo.choices" :key="item._id">
           <input @change="handleChangeRadio(item._id)" type="radio" :checked="item.selected">
           <input v-model="item.value" type="text" name="">
           <i class="iconfont icon-add" @click="handleAdd(i)"></i>
-          <i class="iconfont icon-reduce" @click="handleDelete(i)"></i>
+          <i class="iconfont icon-reduce"  v-show="comInfo.choices.length > 1"  @click="handleDelete(i)"></i>
         </div>
       </div>
       <div class="item-wrap" v-else>
@@ -24,7 +24,7 @@
           <input @change="handleChangeBox(item)" type="checkbox" :checked="item.selected">
           <input v-model="item.value" type="text" name="">
             <i class="iconfont icon-add" @click="handleAdd(i)"></i>
-            <i class="iconfont icon-reduce" @click="handleDelete(i)"></i>
+            <i class="iconfont icon-reduce" v-show="comInfo.choices.length > 1"  @click="handleDelete(i)"></i>
         </div>
       </div>
     </div>
@@ -56,6 +56,9 @@ export default {
           item.selected = false
         }
       })
+      if (this.comInfo.component === 'formSelect') {
+        this.comInfo.propValue = id
+      }
     },
     handleChangeBox (item) {
       item.selected = !item.selected
@@ -66,10 +69,15 @@ export default {
           _id: this.randomId(),
           value: '选项',
           selected: false
-        })
+        }
+      )
+      this.comInfo.height += 21
+      console.log(this.comInfo.height)
     },
     handleDelete (i) {
       this.comInfo.choices.splice(i, 1)
+      this.comInfo.height -= 21
+      console.log(this.comInfo.height)
     },
     randomId () { // 生成不重复的随机字符串
       let str = ''

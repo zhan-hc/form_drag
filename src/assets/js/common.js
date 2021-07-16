@@ -9,38 +9,17 @@ const comtemp = {
     icon: 'icon-mobanzhizuo_danhangwenben', // 左侧组件列表中显示的名字
     animations: [], // 动画列表
     height: 107,
-    placeholder: '请输入文本内容',
-    events: {}, // 事件列表
-    style: { // 组件样式
-      width: 200,
-      height: 33,
-      fontSize: 14,
-      fontWeight: 500,
-      lineHeight: '',
-      letterSpacing: 0,
-      textAlign: '',
-      color: ''
-    }
+    disabled: true,
+    placeholder: '请输入文本内容'
   },
   'textArea': {
     component: 'formTextarea',
     label: '多行文本',
-    propValue: 'icon-duohangwenben',
-    icon: '',
+    propValue: '',
+    icon: 'icon-duohangwenben',
     height: 164,
-    placeholder: '请输入多行文本内容',
-    animations: [],
-    events: {},
-    style: {
-      width: 200,
-      height: 33,
-      fontSize: 14,
-      fontWeight: 500,
-      lineHeight: '',
-      letterSpacing: 0,
-      textAlign: '',
-      color: ''
-    }
+    disabled: true,
+    placeholder: '请输入多行文本内容'
   },
   'radio': {
     component: 'formRadio',
@@ -48,8 +27,7 @@ const comtemp = {
     propValue: '',
     icon: 'icon-danxiangxuanze',
     height: 114,
-    animations: [],
-    events: {},
+    disabled: true,
     choices: [
       {
         _id: 1001,
@@ -66,17 +44,7 @@ const comtemp = {
         value: '选项',
         selected: false
       }
-    ],
-    style: {
-      width: 200,
-      height: 33,
-      fontSize: 14,
-      fontWeight: 500,
-      lineHeight: '',
-      letterSpacing: 0,
-      textAlign: '',
-      color: ''
-    }
+    ]
   },
   'checkbox': {
     component: 'formCheckbox',
@@ -84,6 +52,7 @@ const comtemp = {
     propValue: '',
     icon: 'icon-duoxiangxuanze',
     height: 114,
+    disabled: true,
     choices: [
       {
         _id: 1001,
@@ -100,19 +69,7 @@ const comtemp = {
         value: '选项',
         selected: false
       }
-    ],
-    animations: [],
-    events: {},
-    style: {
-      width: 200,
-      height: 33,
-      fontSize: 14,
-      fontWeight: 500,
-      lineHeight: '',
-      letterSpacing: 0,
-      textAlign: '',
-      color: ''
-    }
+    ]
   },
   'select': {
     component: 'formSelect',
@@ -120,19 +77,25 @@ const comtemp = {
     propValue: '',
     icon: 'icon-xialakuang1',
     height: 101,
+    disabled: true,
     placeholder: '请选择',
-    animations: [],
-    events: {},
-    style: {
-      width: 200,
-      height: 33,
-      fontSize: 14,
-      fontWeight: 500,
-      lineHeight: '',
-      letterSpacing: 0,
-      textAlign: '',
-      color: ''
-    }
+    choices: [
+      {
+        _id: 1001,
+        value: '选项',
+        selected: false
+      },
+      {
+        _id: 1002,
+        value: '选项',
+        selected: false
+      },
+      {
+        _id: 1003,
+        value: '选项',
+        selected: false
+      }
+    ]
   }
 }
 const comtempList = [

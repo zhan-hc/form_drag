@@ -1,9 +1,9 @@
 <template>
   <div class="select-wrap">
     <span>{{data.label}}</span>
-    <select disabled>
+    <select :disabled="data.disabled" v-model="data.propValue">
       <option value="">{{data.placeholder}}</option>
-      <!-- <option v-for="item in opList" :value ="item.value" :key="item.id">{{item.label}}</option> -->
+      <option  :value ="item._id" v-for="item in data.choices" :key="item._id">{{item.value}}</option>
     </select>
   </div>
 </template>

@@ -1,7 +1,7 @@
 <template>
   <div class="textarea-wrap">
     <span>{{data.label}}</span>
-    <textarea name="" id="" rows="5" :placeholder="data.placeholder" disabled></textarea>
+    <textarea name="" id="" rows="5" :placeholder="data.placeholder" :disabled="data.disabled"></textarea>
   </div>
 </template>
 

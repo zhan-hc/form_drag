@@ -1,7 +1,7 @@
 <template>
 <div class="input-wrap">
   <span>{{data.label}}</span>
-  <input type="text" :placeholder="data.placeholder" disabled>
+  <input type="text" :placeholder="data.placeholder" :disabled="data.disabled">
 </div>
 
 </template>

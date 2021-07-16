@@ -11,6 +11,9 @@
       <i class="iconfont" :class="item.icon"></i>
       <div class="text">{{item.label}}</div>
     </div>
+    <div class="create-form" @click="showDialog">
+      生成表单
+    </div>
   </div>
 </template>
 
@@ -26,7 +29,6 @@ export default {
   },
   data () {
     return {
-
     }
   },
   methods: {
@@ -36,6 +38,9 @@ export default {
     },
     handleClick (type) {
       this.$emit('handleClick', type)
+    },
+    showDialog () {
+      this.$emit('showDialog', true)
     }
   }
 }
@@ -43,6 +48,7 @@ export default {
 
 <style scoped lang="scss">
 .content-left{
+  position: relative;
   width: 360px;
   min-width: 360px;
   height: 900px;
@@ -74,6 +80,19 @@ export default {
     .text {
       display: inline-block;
     }
+  }
+  .create-form{
+    position: absolute;
+    bottom: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 150px;
+    padding: 10px 20px;
+    background: #DCDCDC;
+    text-align: center;
+    font-weight: bold;
+    cursor: pointer;
+
   }
 }
 </style>

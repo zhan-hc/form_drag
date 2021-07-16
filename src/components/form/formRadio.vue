@@ -2,7 +2,7 @@
   <div class="radio-wrap">
     <span>{{data.label}}</span>
     <div class="radio-item" v-for="item in data.choices" :key="item._id">
-      <input disabled type="radio" :checked="item.selected">{{item.value}}
+      <input :disabled="data.disabled" type="radio" :checked="item.selected">{{item.value}}
     </div>
   </div>
 </template>
